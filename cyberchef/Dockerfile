@@ -1,4 +1,4 @@
-FROM --platform=${BUILDPLATFORM} docker.io/node:24 AS builder
+FROM --platform=${BUILDPLATFORM} docker.io/node:26 AS builder
 
 # Clone and build CyberChef
 WORKDIR /build
@@ -11,4 +11,3 @@ RUN npm run build
 FROM ghcr.io/static-web-server/static-web-server:2
 
 COPY --from=builder /build/CyberChef/build/prod /public
-
